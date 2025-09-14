@@ -7,6 +7,8 @@ float3 position    ;
 float2 texCoord    ;
 float2 vTexCoord    ;
 __device__ void main(    ) {
+        vTexCoord = texCoord;
+        gl_Position = vec4(position, 1.0);
     }
     
 }
@@ -17,7 +19,8 @@ float2 vTexCoord    ;
 float4 fragColor    ;
 __constant__ cudaTextureObject_t diffuseTexture    ;
 __device__ void main(    ) {
-float3 color =         ;
+float3 color = texture(diffuseTexture, vTexCoord).rgb        ;
+        fragColor = vec4(color, 1.0);
     }
     
 }

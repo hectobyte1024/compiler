@@ -19,27 +19,42 @@ void CUDAGenerator::visit(LiteralExpression& node) {
 }
 
 void CUDAGenerator::visit(BinaryExpression& node) {
-    // Stub implementation
+    node.left->accept(*this);
+    write(" " + getBinaryOperatorString(node.op) + " ");
+    node.right->accept(*this);
 }
 
 void CUDAGenerator::visit(UnaryExpression& node) {
-    // Stub implementation
+    write(getUnaryOperatorString(node.op));
+    node.operand->accept(*this);
 }
 
 void CUDAGenerator::visit(FunctionCallExpression& node) {
-    // Stub implementation
+    write(node.functionName + "(");
+    for (size_t i = 0; i < node.arguments.size(); ++i) {
+        if (i > 0) write(", ");
+        node.arguments[i]->accept(*this);
+    }
+    write(")");
 }
 
 void CUDAGenerator::visit(MemberAccessExpression& node) {
-    // Stub implementation
+    node.object->accept(*this);
+    write("." + node.member);
 }
 
 void CUDAGenerator::visit(ExpressionStatement& node) {
-    // Stub implementation
+    indent();
+    node.expression->accept(*this);
+    write(";\n");
 }
 
 void CUDAGenerator::visit(AssignmentStatement& node) {
-    // Stub implementation
+    indent();
+    node.target->accept(*this);
+    write(" = ");
+    node.value->accept(*this);
+    write(";\n");
 }
 
 void CUDAGenerator::visit(VariableDeclaration& node) {
@@ -137,7 +152,11 @@ void CUDAGenerator::visit(ShaderDeclaration& node) {
 }
 
 void CUDAGenerator::visit(BlockStatement& node) {
-    // Stub implementation
+    for (auto& stmt : node.statements) {
+        if (stmt) {
+            stmt->accept(*this);
+        }
+    }
 }
 
 void CUDAGenerator::visit(IfStatement& node) {
