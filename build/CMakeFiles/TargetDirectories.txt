@@ -1,0 +1,10 @@
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/sdl_compiler_lib.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/sdl_compiler.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/debug.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/release.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/edit_cache.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/rebuild_cache.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/list_install_components.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/install.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/install/local.dir
+/home/hectobyte1024/Documents/sdl shader compiler/build/CMakeFiles/install/strip.dir

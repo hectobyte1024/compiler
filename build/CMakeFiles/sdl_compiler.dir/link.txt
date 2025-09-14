@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/sdl_compiler.dir/src/main.cpp.o CMakeFiles/sdl_compiler.dir/src/cli/cli_parser.cpp.o -o sdl_compiler  libsdl_compiler_lib.a 
