@@ -1,0 +1,49 @@
+//
+// SDL Shader Examples
+//
+
+// Simple vertex shader
+shader simpleVertex : vertex {
+    in vec3 position;
+    in vec2 texCoord;
+    
+    out vec2 vTexCoord;
+    
+    uniform mat4 mvpMatrix;
+    
+    void main() {
+        gl_Position = mvpMatrix * vec4(position, 1.0);
+        vTexCoord = texCoord;
+    }
+}
+
+// Simple fragment shader
+shader simpleFragment : fragment {
+    in vec2 vTexCoord;
+    out vec4 fragColor;
+    
+    uniform sampler2D mainTexture;
+    uniform float opacity;
+    
+    void main() {
+        vec4 texColor = texture(mainTexture, vTexCoord);
+        fragColor = vec4(texColor.rgb, texColor.a * opacity);
+    }
+}
+
+// Compute shader for image processing
+shader imageProcess : compute {
+    uniform sampler2D inputImage;
+    uniform vec2 imageSize;
+    
+    void main() {
+        vec2 coord = gl_GlobalInvocationID.xy / imageSize;
+        vec4 color = texture(inputImage, coord);
+        
+        // Simple brightness adjustment
+        color.rgb *= 1.2;
+        
+        // Write result (would need proper compute shader output)
+        // imageStore(outputImage, ivec2(gl_GlobalInvocationID.xy), color);
+    }
+}

@@ -1,0 +1,22 @@
+// Comprehensive SDL test demonstrating all features
+shader testVertex : vertex {
+    in vec3 position;
+    in vec2 texCoord;
+    out vec2 vTexCoord;
+    
+    void main() {
+        vTexCoord = texCoord;
+        gl_Position = vec4(position, 1.0);
+    }
+}
+
+shader testFragment : fragment {
+    in vec2 vTexCoord;
+    out vec4 fragColor;
+    uniform sampler2D diffuseTexture;
+    
+    void main() {
+        vec3 color = texture(diffuseTexture, vTexCoord).rgb;
+        fragColor = vec4(color, 1.0);
+    }
+}

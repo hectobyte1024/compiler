@@ -1,0 +1,5 @@
+shader test : vertex {
+    void main() {
+        simple(x);
+    }
+}

@@ -1,0 +1,5 @@
+shader simple : vertex {
+    void main() {
+        func(1.0, b);
+    }
+}
